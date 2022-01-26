@@ -79,9 +79,12 @@ dygraph(q_xts) %>%
   dyAxis("y", label = "Discharge (cfs)") 
 ```
 
+# Conclusion
+
+From the above graphs, we see.....
 
 
-# Assignment. 
+# Assignment
 
 
 This assignment will be primarily about demonstrating some expertice in using
