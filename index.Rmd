@@ -1,6 +1,6 @@
 ---
-title: "Discharge Data Example"
-author: "Matthew Ross"
+title: "Discharge from the Poudre River"
+author: "Kaydee Barker"
 date: "1/24/2022"
 output:
   html_document:
@@ -11,6 +11,11 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
+#install.packages("tidyverse")
+#install.packages("dataRetrieval")
+#install.packages("dygraphs")
+#install.packages("xts")
+
 library(tidyverse)
 library(dataRetrieval)
 library(dygraphs)
@@ -18,7 +23,13 @@ library(xts)
 ```
 
 
-# Methods
+# Introduction
+
+## Background on the Poudre River
+
+Cache La Poudre River is an important
+
+### SiteDescription
 
 The Poudre River at Lincoln Bridge is:
 
@@ -29,19 +40,12 @@ The Poudre River at Lincoln Bridge is:
   - Near an open space area and the Poudre River Trail
   
   - **Downstream of many agricultral diversions**
-
-
-## SiteDescription
-
+  
 ![](https://waterdata.usgs.gov/nwisweb/local/state/co/text/pics/06752260big.jpg)
 
+# Data Visualization
 
-## Data Acquisition and Plotting tests
-
-## Data Download
-
-
-```{r downloader}
+```{r downloader, include=FALSE}
 
 q <- readNWISdv(siteNumbers = '06752260',
                 parameterCd = '00060',
@@ -52,31 +56,25 @@ q <- readNWISdv(siteNumbers = '06752260',
 
 ```
 
+```{r, warning = FALSE, fig.width = 8, fig.height = 5, include=FALSE}
 
-
-## Static Data Plotter
-
-
-```{r, warning = FALSE, fig.width = 8, fig.height = 5}
-
-ggplot(q, aes(x = Date, y = q)) + 
-  geom_line() + 
-  ylab('Q (cfs)') + 
-  ggtitle('Discharge in the Poudre River, Fort Collins')
+#ggplot(q, aes(x = Date, y = q)) + 
+  #geom_line() + 
+  #ylab('Q (cfs)') + 
+  #ggtitle('Discharge in the Poudre River, Fort Collins')
 
 ```
 
 
-## Interactive Data Plotter
-
-
-```{r}
+```{r, echo=FALSE}
 
 q_xts <- xts(q$q, order.by = q$Date)
 
 
 dygraph(q_xts) %>%
-  dyAxis("y", label = "Discharge (cfs)") 
+  dyAxis("y", label = "Discharge (cfs)") %>%
+  dyOptions(drawPoints = TRUE, pointSize = 2)
+
 ```
 
 # Conclusion
@@ -116,14 +114,4 @@ todays date, not just a static date you enter.
 
 9) Bonus, create an "index_talk.Rmd" version of your document using the
 `revealjs` package. Add link to your original report-style document. 
-
-
-
-
-## DyGraph example. 
-
-
-## Poudre Paragraph
-
-
 
