@@ -1,7 +1,7 @@
 ---
 title: "Discharge from the Poudre River"
 author: "Kaydee Barker"
-date: "1/24/2022"
+date: "`r Sys.Date()`"
 output:
   html_document:
     toc: true
@@ -27,7 +27,9 @@ library(xts)
 
 ## Background on the Poudre River
 
-Cache La Poudre River is an important
+[Cache La Poudre River](https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/205018) is an important watershed that supports **agriculture, industry, recreation, and residential needs** on the Front Range of Colorado. It also provides for cottonwood forest, shrub, and grassland ecosystems that support [wildlife](http://poudretrail.org/habitat-wildlife/#fish) from the mountains down to the prairies. The unique **biodiversity** and **history** of the Cache La Poudre watershed are valued widely; 45 miles along the Poudre are encompassed in a [National Heritage Area](https://www.nps.gov/places/cache-la-poudre-river-national-heritage-area.htm).
+The history of Cache La Poudre is linked to the *history of the West*, because its banks supported the first major [irrigation-based agricultural settlement](https://www-jstor-org.ezproxy2.library.colostate.edu/stable/pdf/1821074.pdf) of its kind in 1870, which would soon spread through the Arid West.
+
 
 ### SiteDescription
 
@@ -43,7 +45,7 @@ The Poudre River at Lincoln Bridge is:
   
 ![](https://waterdata.usgs.gov/nwisweb/local/state/co/text/pics/06752260big.jpg)
 
-# Data Visualization
+# Interactive Discharge Chart
 
 ```{r downloader, include=FALSE}
 
@@ -76,42 +78,3 @@ dygraph(q_xts) %>%
   dyOptions(drawPoints = TRUE, pointSize = 2)
 
 ```
-
-# Conclusion
-
-From the above graphs, we see.....
-
-
-# Assignment
-
-
-This assignment will be primarily about demonstrating some expertice in using
-RMarkdown, since we will be using Rmds as the primary form of homework and 
-assignments. With that in mind, your assignment for this homework is to:
-
-
-1) Fork the example repository into your personal GitHub
-
-2) Create an RStudio project from your Personal clone of the Repo. 
-
-3) Create a table of contents that is floating, but displays three levels of
-headers instead of two (by editing the content at the beginning of the document)
-
-4) Make a version of the `dygraph` with points and lines by using rstudio's
-dygraph [guide](https://rstudio.github.io/dygraphs/)
-
-5) Writing a paragraph on the Poudre river with at least three hyperlinks,
-**two bolded sections**, and one *italicized phrase*. The content of this paragraph
-is not vital, but try to at least make it true and interesting, and, of course,
-don't plagiarize. 
-
-6) Knit that document, and then git commit and push to your personal GitHub.
-
-7) Use the GitHub -> Settings -> Pages tab to create a website of your report.
-
-8) Bonus, make the timestamp in the header dynamic. As in it only adds
-todays date, not just a static date you enter. 
-
-9) Bonus, create an "index_talk.Rmd" version of your document using the
-`revealjs` package. Add link to your original report-style document. 
-
